@@ -1,3 +1,4 @@
+//representation of polynomials using linked list
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct nodal
