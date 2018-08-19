@@ -1,4 +1,3 @@
-//representation of polynomials using linked list
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct nodal
@@ -10,7 +9,7 @@ typedef struct nodal
 void createList(node **head)
 {
     int a=1;
-    node *ptr;
+    node *ptr,*nptr=NULL;
     printf("enter the coefficient and exponent consecutively\n");
     while(a!=0)
     {
@@ -22,19 +21,18 @@ void createList(node **head)
         if(*head==NULL)
         {
             *head=ptr;
+            nptr=ptr;
         }
         else
         {
-            while(temp->next!=NULL)
-            {
-                temp=temp->next;
-            }
-            temp->next=ptr;
+            nptr->next=ptr;
+            nptr=nptr->next;
         }
     }
 }
 void addList(node *head1,node *head2,node **head)
 {
+    node *nptr=NULL;
     while(head1!=NULL&&head2!=NULL)
     {
         node *ptr=(node*)malloc(sizeof(node));
@@ -60,18 +58,15 @@ void addList(node *head1,node *head2,node **head)
             head1=head1->next;
         }
         ptr->next=NULL;
-        node *temp=*head;
         if(*head==NULL)
         {
             *head=ptr;
+            nptr=ptr;
         }
         else
         {
-            while(temp->next!=NULL)
-            {
-                temp=temp->next;
-            }
-            temp->next=ptr;
+            nptr->next=ptr;
+            nptr=nptr->next;
         }
     }
     if(head1!=NULL)
@@ -82,19 +77,16 @@ void addList(node *head1,node *head2,node **head)
             ptr->coefficient=head1->coefficient;
             ptr->exponent=head1->exponent;
             head1=head1->next;
-            node *temp=*head;
             ptr->next=NULL;
             if(*head==NULL)
             {
                 *head=ptr;
+                nptr=ptr;
             }
             else
             {
-                while(temp->next!=NULL)
-                {
-                    temp=temp->next;
-                }
-                temp->next=ptr;
+                nptr->next=ptr;
+                nptr=nptr->next;
             }
         }
     }
@@ -106,19 +98,16 @@ void addList(node *head1,node *head2,node **head)
             ptr->coefficient=head2->coefficient;
             ptr->exponent=head2->exponent;
             head2=head2->next;
-            node *temp=*head;
             ptr->next=NULL;
             if(*head==NULL)
             {
                 *head=ptr;
+                nptr=ptr;
             }
             else
             {
-                while(temp->next!=NULL)
-                {
-                    temp=temp->next;
-                }
-                temp->next=ptr;
+                nptr->next=ptr;
+                nptr=nptr->next;
             }
         }
     }
@@ -135,7 +124,7 @@ void display(node *head)
 }
 int main()
 {
-    node *header=NULL,*header1=NULL,*header2=NULL,*sum=NULL;
+    node *header,*header1,*header2,*sum;
     int choice;
     char ch;
     printf("MENU\n1.Represent the polynomial using linked list\n2.Add two polynomials\n");
@@ -145,11 +134,15 @@ int main()
         scanf("%d",&choice);
         switch(choice)
         {
-            case 1:createList(&header);
+            case 1:header=NULL;
+                   createList(&header);
                    printf("your entered polynomial is \n");
                    display(header);
                    break;
-            case 2:printf("enter the first polynomial\n");
+            case 2:header1=NULL;
+                   header2=NULL;
+                   sum=NULL;
+                   printf("enter the first polynomial\n");
                    createList(&header1);
                    display(header1);
                    printf("enter the second polynomial\n");
@@ -166,4 +159,5 @@ int main()
     }while(ch=='Y'||ch=='y');
     return 0;
 }
+
 
