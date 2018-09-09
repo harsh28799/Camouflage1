@@ -1,3 +1,9 @@
+/* HARSH MOHAN
+ * 117CS0232
+ *
+ * ASSIGNMENT 3 QUESTION 3
+ * CONVERTION OF INFIX EXPRESSION TO POSTFIX EXPRESSION*/
+
 #include<stdio.h>
 #include<string.h>
 char infix[50],postfix[50],stack[50];
