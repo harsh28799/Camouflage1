@@ -46,7 +46,7 @@ int isFull()
 {
 	if(ctr<max_size)
 		return 1;
-	else 
+	else
 		return 0;
 }
 void display()
@@ -65,6 +65,7 @@ int main()
     int num;
     top=NULL;
     int choice;
+    printf("MENU\n1.PUSH\n2.POP\n3.CHECK EMPTY\n4.CHECK FULL\n5.DISPLAY\n\n");
     do
     {
         printf("enter your choice\n");

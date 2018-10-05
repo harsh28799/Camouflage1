@@ -1,6 +1,6 @@
 /* HARSH MOHAN
  * 117CS0232
- * 
+ *
  * ASSIGNMENT 3 QUESTION 1
  * STACK IMPLEMENTATION USING ARRAY*/
 
@@ -46,6 +46,7 @@ int main()
     int choice;
     int num;
     char ch;
+    printf("MENU\n1.PUSH\n2.CHECK FULL\n3.POP\n4.CHECK EMPTY\n5.DISPLAY\n\n");
     do
     {
         printf("enter your choice\n");
@@ -87,4 +88,4 @@ int main()
         scanf("%s",&ch);
     }while(ch=='y'||ch=='Y');
 return 0;
-}          
+}

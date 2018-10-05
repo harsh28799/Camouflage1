@@ -129,6 +129,7 @@ int main()
 	int value;
 	int choice;
 	char ch;
+	printf("MENU\n1.CREATE EMPTY QUEUE\n2.CHECK IF QUEUE IS FULL\n3.CHECK IF QUEUE IS EMPTY\n4.ENQUEUE\n5.DEQUEUE\n6.MAKE QUEUE EMPTY\n7.DISPLAY\n\n");
 	do
 	{
 		printf("enter your choice(1-7)\n");
