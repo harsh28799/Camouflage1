@@ -1,3 +1,9 @@
+/*HARSH MOHAN
+ * 117CS0232
+ *
+ * ASSIGNMENT 5 QUESTION 5
+ * IMPLEMENTATION OF DEPTH FIRST SEARCH*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
