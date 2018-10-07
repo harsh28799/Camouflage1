@@ -1,11 +1,12 @@
-/*HARSH MOHAN 
+/*HARSH MOHAN
  * 117CS0232
  *
- * ASSIGNMENT 5 QUESTION 4
- * IMPLEMENTATION OF BREDTH FIRST SEARCH*/
+ * ASSIGNMENT 5 QUESTION 5
+ * IMPLEMENTATION OF DEPTH FIRST SEARCH*/
 
 #include<stdio.h>
 #include<stdlib.h>
+
 typedef struct nodal
 {
 	int value;
@@ -13,37 +14,36 @@ typedef struct nodal
 }node;
 
 int num;
-
 node *arr[20];
 
-int createAdjacencyList()
+void adjList()
 {
-	int i,j;
-	int n;
 	int data;
-	printf("enter the number of vertices\n");
+	int i,j;
+	int no;
+	printf("enter the number of vertices in the graph\n");
 	scanf("%d",&num);
 	for(i=0;i<num;i++)
 		arr[i]=NULL;
 	for(i=0;i<num;i++)
 	{
-		printf("enter the no of adjacent nodes of %d ",i+1);
-		scanf("%d",&n);
-		for(j=0;j<n;j++)
+		printf("enter the number of adjacent nodes of %d\n",i+1);
+		scanf("%d",&no);
+		for(j=0;j<no;j++)
 		{
-			printf("enter the %d adjacent node of %d ",j+1,i+1);
+			printf("enter the %d adjacent node of %d",j+1,i+1);
 			scanf("%d",&data);
 			node *ptr=(node*)malloc(sizeof(node));
-			ptr->value=data;
 			ptr->next=arr[i];
+			ptr->value=data;
 			arr[i]=ptr;
 		}
 	}
 
-	printf("the adjacency list is \n");
+	printf("the adjacency list is\n");
 	for(i=0;i<num;i++)
 	{
-		printf("%d\t",i+1);
+		printf("%d \t:",i+1);
 		node *ptr=arr[i];
 		while(ptr!=NULL)
 		{
@@ -53,63 +53,44 @@ int createAdjacencyList()
 	}
 }
 
+int stack[20];
+int top=-1;
 int visit[20];
-int queue[20];
-int front=-1,rear=-1;
 
 int isEmpty()
 {
-	if(front==rear&&front==-1)
+	if(top==-1)
 		return 0;
 	else
 		return 1;
 }
 
-void push(int no)
+void push(int value)
 {
-	if(front==rear&&front==-1)
-	{
-		front=rear=0;
-		queue[rear]=no;
-	}
-	else
-	{
-		rear=rear+1;
-		queue[rear]=no;
-	}
+	top=top+1;
+	stack[top]=value;
 }
-
 int pop()
 {
-	int val;
-	if(front==rear)
-	{
-		val=queue[front];
-		front=rear=-1;
-	}
-	else
-	{
-		val=queue[front];
-		front=front+1;
-	}
-	return val;
+	int value=stack[top];
+	top=top-1;
+	return value;
 }
 
 void traversal()
 {
 	int i;
-	node *ptr;
 	for(i=0;i<num;i++,visit[i]=0);
 	int start;
-	printf("enter the starting node ");
+	printf("enter the first node\n");
 	scanf("%d",&start);
 	push(start);
 	visit[start-1]=1;
 	while(isEmpty())
 	{
-		start=pop();
-		printf("%d ",start);
-		ptr=arr[start-1];
+		int x=pop();
+		printf("%d",x);
+		node *ptr=arr[x-1];
 		while(ptr!=NULL)
 		{
 			if(visit[(ptr->value)-1]==0)
@@ -124,7 +105,7 @@ void traversal()
 
 int main()
 {
-	createAdjacencyList();
+	adjList();
 	traversal();
 	return 0;
 }
