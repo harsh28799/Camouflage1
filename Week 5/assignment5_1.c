@@ -6,12 +6,15 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+
 typedef struct nodal
 {
 	int val;
 	struct nodal *next;
 }node;
+
 int adjMatrix[50][50];
+
 int main()
 {
 	int i,j;
@@ -41,9 +44,9 @@ int main()
 			ptr->next=arr[i];
 			arr[i]=ptr;
 
-		}	
+		}
 	}
-		
+
 	printf("the adjacency matrix is\n");
 	for(i=0;i<num;i++)
 	{
